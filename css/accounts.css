@@ -1,0 +1,50 @@
+body {
+    background-color: #fff;
+}
+
+.main {
+    width: 60%;
+    margin: 0 auto;
+}
+
+nav {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 4rem;
+}
+
+h1, h2 {
+    margin-left: 22px;
+    margin-top: 22px;
+}
+
+main, footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.mainpage-link {
+    color: black;
+}
+
+.mainpage-link:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.accounts-list-item:hover {
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+.accounts-list-item div {
+    margin: auto;
+    height: 3rem;
+    border-radius: 5px;
+    margin-top: 12px;
+}
+
+.accounts-list-item div p {
+    padding-left: 15px;
+    padding-top: 10px;
+}
