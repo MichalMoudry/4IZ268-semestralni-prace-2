@@ -9,7 +9,7 @@ $(document).ready(function () {
     accounts.forEach(element => {
         displayItemDiv = document.createElement("div");
         displayItemDiv.classList.add("accounts-list-item");
-        displayItemDiv.setAttribute("onclick", "navigateToEditPage('"+element+"');");
+        displayItemDiv.setAttribute("onclick", "navigateToEditPage('" + element + "');");
         nameDiv = document.createElement("div");
         nameParagraph = document.createElement("p");
         nameParagraph.textContent = element;
@@ -30,6 +30,7 @@ function addAccount() {
             var accountsList = document.getElementById("accounts-list");
             var displayItemDiv = document.createElement("div");
             displayItemDiv.classList.add("accounts-list-item");
+            displayItemDiv.setAttribute("onclick", "navigateToEditPage('" + displayName + "');");
             var nameDiv = document.createElement("div");
             var nameParagraph = document.createElement("p");
             nameParagraph.textContent = displayName;
@@ -51,6 +52,7 @@ function addAccount() {
 }
 
 function navigateToEditPage(userID) {
-    //window.location.href = "./accounts/edit/?userID=" + userID;
-    window.location.href = "./edit/?userID=" + userID;
+    //window.location.href = "./accounts/edit/?userID=" + userID;          pro GitHub pages
+    //window.location.href = "./edit/?userID=" + userID;                   pro lokální prostředí
+    window.location.href = "./accounts/edit/?userID=" + userID; 
 }
