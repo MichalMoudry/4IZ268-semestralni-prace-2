@@ -51,5 +51,6 @@ function addAccount() {
 }
 
 function navigateToEditPage(userID) {
+    //window.location.href = "./accounts/edit/?userID=" + userID;
     window.location.href = "./edit/?userID=" + userID;
 }

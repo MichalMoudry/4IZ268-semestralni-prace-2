@@ -9,30 +9,13 @@ nav {
     margin-top: 4rem;
 }
 
-h1 {
+h1, h2 {
     margin-left: 22px;
     margin-top: 22px;
 }
 
-main {
-    margin-top: 3rem;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-footer {
-    padding-left: 15px;
-    padding-right: 15px;
-    position: absolute;
-    bottom: 0;
-}
-
-footer button {
-    margin-bottom: 1.5rem;
-}
-
-.accounts-link {
-    cursor: pointer;
+main, footer {
+    padding-left: 22px;
 }
 
 .mainpage-link {
@@ -42,4 +25,8 @@ footer button {
 .mainpage-link:hover {
     color: black;
     text-decoration: none;
+}
+
+.alert {
+    display: none;
 }
