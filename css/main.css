@@ -43,3 +43,7 @@ footer button {
     color: black;
     text-decoration: none;
 }
+
+tbody tr {
+    cursor: pointer;
+}

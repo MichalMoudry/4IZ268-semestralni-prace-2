@@ -26,17 +26,36 @@ function sendEmail() {
     var recipient = document.getElementById("email-recipient").value;
     var content = document.getElementById("email-content").value;
     if (title != "" && recipient != "" && content != "" && sender != "") {
+        var tbody = document.getElementById("email-list-tbody");
+        var tr = document.createElement("tr");
+        var titleColumn = document.createElement("td");
+        var toColumn = document.createElement("td");
+        var fromColumn = document.createElement("td");
+        var dateColumn = document.createElement("td");
+        titleColumn.textContent = title;
+        toColumn.textContent = recipient;
+        fromColumn.textContent = sender;
+        dateColumn.textContent = Date.now();
+        tr.appendChild(titleColumn);
+        tr.appendChild(toColumn);
+        tr.appendChild(fromColumn);
+        tr.appendChild(dateColumn);
+        tbody.appendChild(tr);
+
         var account = JSON.parse(localStorage.getItem(sender));
-        console.log(account);
-        Email.send({
-            Host : account[0], //ex.: smtp.office365.com
-            Username : account[1],
-            Password : account[2],
-            To : recipient,
-            From : sender,
-            Subject : title,
-            Body : content
-        });
+        try {
+            Email.send({
+                Host : account[0],
+                Username : account[1],
+                Password : account[2],
+                To : recipient,
+                From : sender,
+                Subject : title,
+                Body : content
+            });
+        } catch (error) {
+            
+        }
     }
 
 }
