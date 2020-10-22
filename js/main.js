@@ -80,7 +80,7 @@ function sendEmail() {
         titleColumn.textContent = title;
         toColumn.textContent = recipient;
         fromColumn.textContent = sender;
-        dateColumn.textContent = dateSent.toLocaleString();
+        dateColumn.textContent = new Date(dateSent).toLocaleString();
         tr.appendChild(titleColumn);
         tr.appendChild(toColumn);
         tr.appendChild(fromColumn);
@@ -144,4 +144,10 @@ function saveEmailForScheduling(title, date_sent, contentAsJsonString) {
 
 function dismissAlert(alertID) {
     document.getElementById(alertID).style.display = "none";
+}
+
+function openModal() {
+    document.getElementById("email-title").value = "";
+    document.getElementById("email-recipient").value = "";
+    document.getElementById("email-content").value = "";
 }
