@@ -1,6 +1,5 @@
 .main {
-    width: 50%;
-    margin: 0 auto;
+    width: 100%;
 }
 
 nav {
@@ -14,8 +13,9 @@ h1, h2 {
     margin-top: 22px;
 }
 
-main, footer {
-    padding-left: 22px;
+main {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .mainpage-link {
@@ -27,6 +27,17 @@ main, footer {
     text-decoration: none;
 }
 
+tbody tr {
+    cursor: pointer;
+}
+
 .alert {
     display: none;
+}
+
+@media (min-width: 768px) {
+    .main {
+        width: 50%;
+        margin: 0 auto;
+    }
 }

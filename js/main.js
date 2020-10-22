@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    window.addEventListener("online", function () {
+        dismissAlert("network-connection-alert");
+        //TODO: Add function for sending scheduled emails.
+    });
+    window.addEventListener("offline", function () {
+        document.getElementById("network-connection-alert").style.display = "block";
+    });
     document.getElementById("email-content").textContent = "";
     var keys = Object.keys(localStorage)
     var userIDs = keys.filter(element => !element.includes("sent_") && !element.includes("draft_") && !element.includes("scheduled_"));
@@ -32,7 +39,6 @@ $(document).ready(function () {
         var emailDataAsJson;
         for (let i = 0; i < sentEmails.length; i++) {
             emailDataAsJson = JSON.parse(localStorage.getItem(sentEmails[i]));
-            console.log(JSON.parse(localStorage.getItem(sentEmails[i])));
             tr = document.createElement("tr");
             titleColumn = document.createElement("td");
             toColumn = document.createElement("td");
@@ -74,7 +80,7 @@ function sendEmail() {
         titleColumn.textContent = title;
         toColumn.textContent = recipient;
         fromColumn.textContent = sender;
-        dateColumn.textContent = dateSent;
+        dateColumn.textContent = dateSent.toLocaleString();
         tr.appendChild(titleColumn);
         tr.appendChild(toColumn);
         tr.appendChild(fromColumn);
@@ -95,11 +101,33 @@ function sendEmail() {
             });
             //If email was sent, save data for later viewing.
             saveSentEmail(title, dateSent, JSON.stringify([account[0], recipient, sender, title, content, dateSent]));
+            document.getElementById("send-success-alert").style.display = "block";
         } catch (error) {
+            //If error happened then schedule email for later.
             saveEmailForScheduling(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, sender, title, content, dateSent]));
         }
     }
+    else {
+        document.getElementById("form-error-alert").style.display = "block";
+    }
+}
 
+/// <summary>
+/// Method for handling onclick event that triggers saving of an email to drafts.
+/// </summary>
+function saveDraft() {
+    var sender = document.getElementById("email-sender").value;
+    var title = document.getElementById("email-title").value;
+    var recipient = document.getElementById("email-recipient").value;
+    var content = document.getElementById("email-content").value;
+    if (title != "" && recipient != "" && content != "" && sender != "") {
+        var account = JSON.parse(localStorage.getItem(sender));
+        var dateSent = Date.now();
+        saveEmailToDrafts(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, sender, title, content, dateSent]));
+    }
+    else {
+        document.getElementById("form-error-alert").style.display = "block";
+    }
 }
 
 function saveEmailToDrafts(title, date_created, contentAsJsonString) {
@@ -112,4 +140,8 @@ function saveSentEmail(title, date_sent, contentAsJsonString) {
 
 function saveEmailForScheduling(title, date_sent, contentAsJsonString) {
     localStorage.setItem("scheduled_" + title + date_sent + "", contentAsJsonString);
+}
+
+function dismissAlert(alertID) {
+    document.getElementById(alertID).style.display = "none";
 }

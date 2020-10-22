@@ -20,47 +20,47 @@
             <a href="./" class="mainpage-link" title="Main page">
                 <h1><i class="fa fa-paper-plane"></i> Email Sender</h1>
             </a>
-            <nav class="navbar navbar-expand-lg fixed-top navbar-light">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./" title="Inbox"><i class="fa fa-inbox"></i> Inbox</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="./drafts/" title="Drafts"><i class="fa fa-edit"></i> Drafts</a>
-                    </li>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbartoggle1" aria-controls="navbartoggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbartoggle">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./" title="Sent emails"><i class="fa fa-inbox"></i> Sent emails</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="./drafts/" title="Drafts"><i class="fa fa-edit"></i> Drafts</a>
+                        </li>
+        
+                        <li class="nav-item">
+                            <a class="nav-link" href="./sent-items/" title="Scheduled emails"><i class="fa fa-calendar"></i> Scheduled emails</a>
+                        </li>
     
-                    <li class="nav-item">
-                        <a class="nav-link" href="./sent-items/" title="Sent items"><i class="fa fa-share"></i> Sent items</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="./user-guide/" title="User guider"><i class="fa fa-info-circle"></i> User guide</a>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav form-inline">
-                    <li class="nav-item accounts-link dropdown">
-                        <a class="nav-link" id="accounts-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user"></i> Accounts <i class="fa fa-caret-down"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="accounts-dropdown">
-                            <div id="dropdown-account-list">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="./user-guide/" title="User guider"><i class="fa fa-info-circle"></i> User guide</a>
+                        </li>
+    
+                        <li class="nav-item accounts-link dropdown">
+                            <a class="nav-link" id="accounts-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user"></i> Accounts <i class="fa fa-caret-down"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="accounts-dropdown">
+                                <div id="dropdown-account-list">
+    
+                                </div>
+                                <a class="dropdown-item" href="./accounts/"><i class="fa fa-plus"></i> Add a new account</a>
                             </div>
-                            <a class="dropdown-item" href="./accounts/"><i class="fa fa-plus"></i> Add a new account</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./settings" title="Settings"><i class="fa fa-cog"></i> Settings</a>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </header>
         
         <main>
             <hr>
-            <div id="email-list">
+            <div id="email-list" class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -120,11 +120,51 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-success" data-dismiss="modal" onclick="sendEmail();"><i class="fa fa-paper-plane"></i> Send</button>
-                    <button type="button" class="btn btn-outline-warning" data-dismiss="modal"><i class="fa fa-edit"></i> Save to drafts</button>
+                    <button type="button" class="btn btn-outline-warning" data-dismiss="modal" onclick="saveDraft();"><i class="fa fa-edit"></i> Save to drafts</button>
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fa fa-trash"></i> Discard</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!--Notification area-->
+    <div class="notification-area">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="send-success-alert">
+            Email was successfuly sent.
+            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('send-success-alert');">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="drafts-success-alert">
+            Email was sent to drafts.
+            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('drafts-success-alert');">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="form-error-alert">
+            Email form was incorrectly filled.
+            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('form-error-alert');">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="scheduling-warning-alert">
+            Email was saved for scheduling (<a class="alert-link">more information about scheduling</a>).
+            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('scheduling-warning-alert');">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-info" role="alert" id="network-connection-alert">
+            Your network connection has been lost.
+            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('network-connection-alert');">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
+    <!--TODO: Add modal for email view-->
 </body>
 </html>
