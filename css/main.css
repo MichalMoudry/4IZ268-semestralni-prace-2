@@ -15,8 +15,6 @@ main {
 footer {
     padding-left: 15px;
     padding-right: 15px;
-    position: absolute;
-    bottom: 0;
 }
 
 footer button {
@@ -43,8 +41,12 @@ tbody tr {
 .notification-area {
     width: 100%;
     position: absolute;
-    bottom: 7px;
     right: 0;
+    bottom: 0;
+}
+
+.notification-area .alert {
+    margin-left: 10px;
     margin-right: 10px;
 }
 
@@ -52,7 +54,7 @@ tbody tr {
     display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1201px) {
     .notification-area {
         width: 20%;
         position: absolute;
@@ -64,5 +66,9 @@ tbody tr {
     .main {
         width: 50%;
         margin: 0 auto;
+    }
+
+    .notification-area .alert {
+        margin-left: 0px;
     }
 }

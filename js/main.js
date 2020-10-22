@@ -1,13 +1,15 @@
 $(document).ready(function () {
     window.addEventListener("online", function () {
         dismissAlert("network-connection-alert");
-        //TODO: Add function for sending scheduled emails.
+        //When network connection is detected, then send all scheduled emails
+        sendScheduledEmails();
     });
     window.addEventListener("offline", function () {
         document.getElementById("network-connection-alert").style.display = "block";
     });
+    sendScheduledEmails();
     document.getElementById("email-content").textContent = "";
-    var keys = Object.keys(localStorage)
+    var keys = Object.keys(localStorage);
     var userIDs = keys.filter(element => !element.includes("sent_") && !element.includes("draft_") && !element.includes("scheduled_"));
     var sentEmails = keys.filter(element => element.includes("sent_"));
     //If user created more accounts then fill UI with options and links.
@@ -70,26 +72,12 @@ function sendEmail() {
     if (title != "" && recipient != "" && content != "" && sender != "") {
         //Set date when email was sent.
         var dateSent = Date.now();
-        //Contruction of row in the table with emails.
-        var tbody = document.getElementById("email-list-tbody");
-        var tr = document.createElement("tr");
-        var titleColumn = document.createElement("td");
-        var toColumn = document.createElement("td");
-        var fromColumn = document.createElement("td");
-        var dateColumn = document.createElement("td");
-        titleColumn.textContent = title;
-        toColumn.textContent = recipient;
-        fromColumn.textContent = sender;
-        dateColumn.textContent = new Date(dateSent).toLocaleString();
-        tr.appendChild(titleColumn);
-        tr.appendChild(toColumn);
-        tr.appendChild(fromColumn);
-        tr.appendChild(dateColumn);
-        tbody.appendChild(tr);
-
         var account = JSON.parse(localStorage.getItem(sender));
         //Try send email.
         try {
+            if (window.navigator.onLine === false) {
+                throw "Your device is offline";
+            }
             Email.send({
                 Host : account[0],
                 Username : account[1],
@@ -106,6 +94,22 @@ function sendEmail() {
             //If error happened then schedule email for later.
             saveEmailForScheduling(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, sender, title, content, dateSent]));
         }
+        //Contruction of row in the table with emails.
+        var tbody = document.getElementById("email-list-tbody");
+        var tr = document.createElement("tr");
+        var titleColumn = document.createElement("td");
+        var toColumn = document.createElement("td");
+        var fromColumn = document.createElement("td");
+        var dateColumn = document.createElement("td");
+        titleColumn.textContent = title;
+        toColumn.textContent = recipient;
+        fromColumn.textContent = sender;
+        dateColumn.textContent = new Date(dateSent).toLocaleString();
+        tr.appendChild(titleColumn);
+        tr.appendChild(toColumn);
+        tr.appendChild(fromColumn);
+        tr.appendChild(dateColumn);
+        tbody.appendChild(tr);
     }
     else {
         document.getElementById("form-error-alert").style.display = "block";
@@ -150,4 +154,23 @@ function openModal() {
     document.getElementById("email-title").value = "";
     document.getElementById("email-recipient").value = "";
     document.getElementById("email-content").value = "";
+}
+
+function sendScheduledEmails() {
+    var scheduledEmailKeys = Object.keys(localStorage).filter(element => element.includes("scheduled_"));
+    scheduledEmailKeys.forEach(scheduledEmailKey => {
+        var account = JSON.parse(localStorage.getItem(scheduledEmailKey));
+        Email.send({
+            Host : account[0],
+            Username : account[1],
+            Password : account[2],
+            To : account[3],
+            From : account[4],
+            Subject : account[5],
+            Body : account[6]
+        });
+        saveSentEmail(account[5], account[7], JSON.stringify([account[0], account[3], account[4], account[5], account[6], account[7]]));
+        document.getElementById("send-success-alert").style.display = "block";
+        localStorage.removeItem(scheduledEmailKey);
+    });
 }

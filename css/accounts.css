@@ -1,6 +1,5 @@
 .main {
-    width: 50%;
-    margin: 0 auto;
+    width: 100%;
 }
 
 nav {
@@ -43,4 +42,19 @@ main, footer {
 .accounts-list-item div p {
     padding-left: 15px;
     padding-top: 10px;
+}
+
+@media (min-width: 768px) {
+    .notification-area {
+        width: 20%;
+        position: absolute;
+        bottom: 7px;
+        right: 0;
+        margin-right: 10px;
+    }
+
+    .main {
+        width: 50%;
+        margin: 0 auto;
+    }
 }
