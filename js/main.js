@@ -14,49 +14,75 @@ $(document).ready(function () {
     var sentEmails = keys.filter(element => element.includes("sent_"));
     //If user created more accounts then fill UI with options and links.
     if (userIDs.length > 0) {
-        var dropdown_acc_list = document.getElementById("dropdown-account-list");
         var account_selector = document.getElementById("email-sender");
         var account_option;
-        var nameLink;
         for (let index = 0; index < userIDs.length; index++) {
             const element = userIDs[index];
-            nameLink = document.createElement("a");
-            nameLink.classList.add("dropdown-item");
-            nameLink.textContent = element;
             account_option = document.createElement("option");
             account_option.value = element;
             account_option.textContent = element;
-            dropdown_acc_list.appendChild(nameLink);
             account_selector.appendChild(account_option);
         }
     }
     //If user sent any emails then display them in UI.
     if (sentEmails.length > 0) {
-        var tbody = document.getElementById("email-list-tbody");
-        var tr;
-        var titleColumn;
-        var toColumn;
-        var fromColumn;
-        var dateColumn;
-        var emailDataAsJson;
+        //Container variables.
+        var itemContainer;
+        var logoDiv;
+        var titleDiv;
+        var toDiv;
+        var dateDiv;
+        var itemContent;
+        var emailList = document.getElementById("email-list");
+        //Variables for content holders.
+        var titleP;
+        var toP;
+        var ellipse;
+        var initialsP;
+        var firstInitial;
+        var secondInitial;
+        var toSplit;
         for (let i = 0; i < sentEmails.length; i++) {
             emailDataAsJson = JSON.parse(localStorage.getItem(sentEmails[i]));
-            tr = document.createElement("tr");
-            titleColumn = document.createElement("td");
-            toColumn = document.createElement("td");
-            fromColumn = document.createElement("td");
-            dateColumn = document.createElement("td");
+            itemContainer = document.createElement("div");
+            itemContainer.classList.add("email-list-item");
+            logoDiv = document.createElement("div");
+            titleDiv = document.createElement("div");
+            toDiv = document.createElement("div");
+            dateDiv = document.createElement("div");
+            itemContent = document.createElement("div");
+            itemContent.classList.add("email-list-item-content");
+            titleP = document.createElement("p");
+            titleP.classList.add("email-list-title");
+            toP = document.createElement("p");
+            toP.classList.add("to-paragraph");
+            initialsP = document.createElement("p");
 
-            titleColumn.textContent = emailDataAsJson[3];
-            toColumn.textContent = emailDataAsJson[1];
-            fromColumn.textContent = emailDataAsJson[2];
-            dateColumn.textContent = new Date(emailDataAsJson[5]).toLocaleString();
+            titleP.textContent = emailDataAsJson[3];
+            titleDiv.appendChild(titleP);
+            itemContent.appendChild(titleDiv);
+            toP.textContent = "From: " + emailDataAsJson[1];
+            toDiv.appendChild(toP);
+            itemContent.appendChild(toDiv);
 
-            tr.appendChild(titleColumn);
-            tr.appendChild(toColumn);
-            tr.appendChild(fromColumn);
-            tr.appendChild(dateColumn);
-            tbody.appendChild(tr);
+            ellipse = document.createElement("div");
+            ellipse.classList.add("ellipse");
+            toSplit = emailDataAsJson[1].toString().split("@")[0].split(".");
+            firstInitial = toSplit[0][0].toUpperCase();
+            secondInitial = toSplit[1][0].toUpperCase();
+            initialsP.textContent = firstInitial + secondInitial;
+            ellipse.appendChild(initialsP);
+            logoDiv.appendChild(ellipse);
+
+            itemContainer.appendChild(logoDiv);
+            itemContainer.appendChild(itemContent);
+            itemContainer.appendChild(dateDiv);
+            emailList.appendChild(itemContainer);
+            emailList.appendChild(document.createElement("hr"));
+            //titleColumn.textContent = emailDataAsJson[3];
+            //toColumn.textContent = emailDataAsJson[1];
+            //fromColumn.textContent = emailDataAsJson[2];
+            //dateColumn.textContent = new Date(emailDataAsJson[5]).toLocaleString();
         }
     }
 });
@@ -95,21 +121,11 @@ function sendEmail() {
             saveEmailForScheduling(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, sender, title, content, dateSent]));
         }
         //Contruction of row in the table with emails.
-        var tbody = document.getElementById("email-list-tbody");
-        var tr = document.createElement("tr");
-        var titleColumn = document.createElement("td");
-        var toColumn = document.createElement("td");
-        var fromColumn = document.createElement("td");
-        var dateColumn = document.createElement("td");
-        titleColumn.textContent = title;
-        toColumn.textContent = recipient;
-        fromColumn.textContent = sender;
-        dateColumn.textContent = new Date(dateSent).toLocaleString();
-        tr.appendChild(titleColumn);
-        tr.appendChild(toColumn);
-        tr.appendChild(fromColumn);
-        tr.appendChild(dateColumn);
-        tbody.appendChild(tr);
+
+        //titleColumn.textContent = title;
+        //toColumn.textContent = recipient;
+        //fromColumn.textContent = sender;
+        //dateColumn.textContent = new Date(dateSent).toLocaleString();
     }
     else {
         document.getElementById("form-error-alert").style.display = "block";
