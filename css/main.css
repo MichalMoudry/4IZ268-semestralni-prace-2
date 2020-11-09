@@ -27,16 +27,8 @@ main {
     background: linear-gradient(90deg, rgba(114,144,223,1) 0%, rgba(59,94,186,1) 98%);
     width: 100%;
     border-radius: 5px;
-    margin-top: 8px;
-}
-
-footer {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-footer button {
-    margin-bottom: 1.5rem;
+    margin-top: 3px;
+    margin-bottom: -3px;
 }
 
 .mainpage-link {
@@ -46,10 +38,6 @@ footer button {
 .mainpage-link:hover {
     color: black;
     text-decoration: none;
-}
-
-tbody tr {
-    cursor: pointer;
 }
 
 .notification-area {
@@ -82,10 +70,15 @@ nav ul li {
     color: #3e3e3ea6;
 }
 
+.active-link:hover {
+    text-decoration: none;
+}
+
 .email-list-item {
     display: flex;
     border-radius: 5px;
     padding: 5px;
+    padding-top: 10px;
 }
 
 .email-list-item:hover {

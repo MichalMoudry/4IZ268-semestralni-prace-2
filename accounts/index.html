@@ -26,9 +26,11 @@
 <body>
     <div class="main">
         <header>
-            <a href="./" class="mainpage-link" title="Main page">
-                <h1><i class="fa fa-paper-plane"></i> Email Sender</h1>
-            </a>
+            <h1>
+                <a href="./" class="mainpage-link" title="Main page">
+                    <i class="fa fa-paper-plane"></i> Email Sender
+                </a>
+            </h1>
             <!--
                 Github pages:
                 <a href="./" class="mainpage-link" title="Main page">
@@ -40,22 +42,45 @@
                     <h1><i class="fa fa-paper-plane"></i> Email Sender</h1>
                 </a>
             -->
-            <h2>Accounts</h2>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./" title="Sent emails" class="inactive-link"><i class="fa fa-inbox"></i> Sent emails</a>
+                    </li>
+
+                    <li>
+                        <a class="inactive-link" href="./drafts/" title="Drafts"><i class="fa fa-edit"></i> Drafts</a>
+                    </li>
+
+                    <li>
+                        <a class="inactive-link" href="./sent-items/" title="Scheduled emails"><i class="fa fa-calendar"></i> Scheduled emails</a>
+                    </li>
+
+                    <li>
+                        <a class="inactive-link" href="./user-guide/" title="User guider"><i class="fa fa-info-circle"></i> User guide</a>
+                    </li>
+
+                    <li>
+                        <a class="active-link" href="./accounts/">
+                            <i class="fa fa-user"></i> Accounts
+                            <div class="active-link-indicator"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </header>
 
         <main>
-            <hr>
-            <div id="accounts-list">
+            <h2><i class="fa fa-user"></i> Accounts</h2>
+
+            <div id="accounts-list" class="mt-1">
 
             </div>
-            <hr>
-        </main>
 
-        <footer>
-            <button type="button" class="btn btn-outline-dark mb-3" data-toggle="modal" data-target="#new-account-modal">
+            <button type="button" class="btn btn-outline-secondary mb-3 mt-3" data-toggle="modal" data-target="#new-account-modal">
                 <i class="fa fa-user-plus"></i> Add a new account
             </button>
-        </footer>
+        </main>
     </div>
 
     <!--Modals-->
