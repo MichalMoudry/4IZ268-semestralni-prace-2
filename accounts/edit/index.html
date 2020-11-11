@@ -40,11 +40,37 @@
                     <h1><i class="fa fa-paper-plane"></i> Email Sender</h1>
                 </a>
             -->
-            <h2>Edit <span id="title-account-name"></span> account</h2>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./" title="Sent emails" class="inactive-link"><i class="fa fa-inbox"></i> Sent emails</a>
+                    </li>
+
+                    <li>
+                        <a class="inactive-link" href="./drafts/" title="Drafts"><i class="fa fa-edit"></i> Drafts</a>
+                    </li>
+
+                    <li>
+                        <a class="inactive-link" href="./sent-items/" title="Scheduled emails"><i class="fa fa-calendar"></i> Scheduled emails</a>
+                    </li>
+
+                    <li>
+                        <a class="inactive-link" href="./user-guide/" title="User guider"><i class="fa fa-info-circle"></i> User guide</a>
+                    </li>
+
+                    <li>
+                        <a class="active-link" href="./accounts/">
+                            <i class="fa fa-user"></i> Accounts
+                            <div class="active-link-indicator"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </header>
     
         <main>
-            <h5>Server information & credentials</h5>
+            <h2><i class="fa fa-pencil text-blue"></i> Edit <span id="title-account-name"></span> account</h2>
+            <h5><i class="fa fa-server text-blue mr-1"></i> Server information & credentials</h5>
             <div class="form-group">
                 <label for="account-host">SMTP server:</label>
                 <input type="text" required placeholder="Server name..." id="account-host" class="form-control" />
@@ -60,20 +86,20 @@
                 <input type="password" required placeholder="Account password..." id="account-password" class="form-control" />
             </div>
 
-            <h5>Display information</h5>
+            <h5><i class="fa fa-user text-blue mr-1"></i> Display information</h5>
             <div class="form-group">
                 <label for="account-displayname">Account display name:</label>
                 <input type="text" disabled="true" placeholder="Display name..." id="account-displayname" class="form-control" />
             </div>
+
+            <button type="button" class="btn btn-outline-success mb-3" onclick="editAccount();">
+                <i class="fa fa-check"></i> Edit
+            </button>
         </main>
     
         <footer>
-            <button type="button" class="btn btn-outline-success" onclick="editAccount();">
-                <i class="fa fa-check"></i> Edit
-            </button>
-
             <div class="alert alert-success mt-3" role="alert" id="account-edit-success">
-                Account has been successfuly edited.
+                Account has been successfuly edited. <a href="./" title="Main page">Go to home page.</a>
             </div>
 
             <div class="alert alert-danger mt-3" role="alert" id="account-edit-error">

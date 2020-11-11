@@ -9,31 +9,16 @@ $(document).ready(function () {
     var localStorageKeys = Object.keys(localStorage);
     var draftKeys = localStorageKeys.filter(element => element.includes("draft_"));
     var draftAsJson;
-    var tbody = document.getElementById("drafts-list-body");
-    var tr;
-    var titleColumn;
-    var toColumn;
-    var fromColumn;
-    var dateColumn;
+    if (draftKeys.length <= 0) {
+        document.getElementById("no-drafts-text").classList.remove("display-none");
+    }
     draftKeys.forEach(draftKey => {
         draftAsJson = JSON.parse(localStorage.getItem(draftKey));
         console.log(draftAsJson);
-        tr = document.createElement("tr");
-        titleColumn = document.createElement("td");
-        toColumn = document.createElement("td");
-        fromColumn = document.createElement("td");
-        dateColumn = document.createElement("td");
-
-        titleColumn.textContent = draftAsJson[5];
-        toColumn.textContent = draftAsJson[3];
-        fromColumn.textContent = draftAsJson[4];
-        dateColumn.textContent = new Date(draftAsJson[7]).toLocaleString();
-
-        tr.appendChild(titleColumn);
-        tr.appendChild(toColumn);
-        tr.appendChild(fromColumn);
-        tr.appendChild(dateColumn);
-        tbody.appendChild(tr);
+        //titleColumn.textContent = draftAsJson[5];
+        //toColumn.textContent = draftAsJson[3];
+        //fromColumn.textContent = draftAsJson[4];
+        //dateColumn.textContent = new Date(draftAsJson[7]).toLocaleString();
     });
 });
 

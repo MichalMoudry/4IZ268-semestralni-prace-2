@@ -24,9 +24,11 @@ function editAccount() {
         localStorage.removeItem(userID);
         localStorage.setItem(userID, JSON.stringify([userData["smtp_server"], userData["smtp_username"], userData["smtp_password"], Date.now()]));
         document.getElementById("account-edit-success").style.display = "block";
+        document.getElementById("account-edit-error").style.display = "none";
     }
     else {
         console.error("Form inputs are empty.");
         document.getElementById("account-edit-error").style.display = "block";
+        document.getElementById("account-edit-success").style.display = "none";
     }
 }
