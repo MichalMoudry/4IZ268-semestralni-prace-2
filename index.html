@@ -54,85 +54,15 @@
                 
             </div>
 
-            <button type="button" class="btn btn-outline-secondary mt-1 mb-3" data-toggle="modal" data-target="#new-email-modal" onclick="openModal();">
+            <button type="button" class="btn btn-outline-secondary mt-1 mb-3" data-toggle="modal" data-target="#new-email-modal"
+                    onclick="navigateToNewEmailPage();">
                 <i class="fa fa-plus"></i> New email
             </button>
         </main>
     </div>
 
-    <!--Modals-->
-    <div class="modal" id="new-email-modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5>Send a new email</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                </div>
-
-                <div class="modal-body">
-                    <div class="form-group">
-                        <select class="form-control" id="email-sender">
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email-title">Email subject:</label>
-                        <input type="text" placeholder="Email subject..." id="email-title" class="form-control" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email-recipient">Email recipient:</label>
-                        <input type="text" placeholder="Email recipient..." id="email-recipient" class="form-control" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email-content">Email content:</label>
-                        <textarea id="email-content" id="email-content" placeholder="Email content..." class="form-control">
-                        </textarea>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success" data-dismiss="modal" onclick="sendEmail();"><i class="fa fa-paper-plane"></i> Send</button>
-                    <button type="button" class="btn btn-outline-warning" data-dismiss="modal" onclick="saveDraft();"><i class="fa fa-edit"></i> Save to drafts</button>
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fa fa-trash"></i> Discard</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!--Notification area-->
     <div class="notification-area">
-        <div class="alert alert-success alert-dismissible fade show" role="alert" id="send-success-alert">
-            Email was successfuly sent.
-            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('send-success-alert');">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <div class="alert alert-success alert-dismissible fade show" role="alert" id="drafts-success-alert">
-            Email was sent to drafts.
-            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('drafts-success-alert');">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="form-error-alert">
-            Email form was incorrectly filled.
-            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('form-error-alert');">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="scheduling-warning-alert">
-            Email was saved for scheduling (<a class="alert-link">more information about scheduling</a>).
-            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('scheduling-warning-alert');">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
         <div class="alert alert-info" role="alert" id="network-connection-alert">
             Your network connection has been lost.
             <button type="button" class="close" aria-label="Close" onclick="dismissAlert('network-connection-alert');">
