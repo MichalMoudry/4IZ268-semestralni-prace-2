@@ -7,10 +7,6 @@
     margin-bottom: 0px;
 }
 
-.display-none {
-    display: none;
-}
-
 @media (min-width: 1201px) {
     .alert {
         width: 65%;

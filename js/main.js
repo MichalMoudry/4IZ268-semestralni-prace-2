@@ -5,7 +5,7 @@ $(document).ready(function () {
         sendScheduledEmails();
     });
     window.addEventListener("offline", function () {
-        document.getElementById("network-connection-alert").style.display = "block";
+        document.getElementById("network-connection-alert").classList.add("display-block");
     });
     sendScheduledEmails();
     var keys = Object.keys(localStorage);
@@ -71,10 +71,13 @@ $(document).ready(function () {
             //dateColumn.textContent = new Date(emailDataAsJson[5]).toLocaleString();
         }
     }
+    else {
+        document.getElementById("no-emails-text").classList.remove("display-none");
+    }
 });
 
 function dismissAlert(alertID) {
-    document.getElementById(alertID).style.display = "none";
+    document.getElementById(alertID).classList.add("display-none");
 }
 
 function navigateToNewEmailPage() {

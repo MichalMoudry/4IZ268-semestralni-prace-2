@@ -57,6 +57,19 @@ nav ul li {
     text-decoration: none;
 }
 
+#app-logo {
+    width: 70px;
+    margin-top: -10px;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
 @media (min-width: 1201px) {
     .main {
         width: 65%;
