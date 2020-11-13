@@ -14,6 +14,10 @@
     display: none;
 }
 
+#email-content {
+    min-height: 8rem;
+}
+
 @media (min-width: 1201px) {
     .notification-area {
         width: 20%;
@@ -25,5 +29,9 @@
 
     .notification-area .alert {
         margin-left: 0px;
+    }
+
+    #email-content {
+        min-height: 12rem;
     }
 }
