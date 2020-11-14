@@ -5,7 +5,7 @@ $(document).ready(function () {
         //sendScheduledEmails();
     });
     window.addEventListener("offline", function () {
-        document.getElementById("network-connection-alert").style.display = "block";
+        displayAlert("network-connection-alert");
     });
     document.getElementById("email-content").textContent = "";
     var keys = Object.keys(localStorage);
@@ -52,20 +52,15 @@ function sendEmail() {
             });
             //If email was sent, save data for later viewing.
             saveSentEmail(title, dateSent, JSON.stringify([account[0], recipient, sender, title, content, dateSent]));
-            document.getElementById("send-success-alert").style.display = "block";
+            clearForm();
+            displayAlert("send-success-alert");
         } catch (error) {
             //If error happened then schedule email for later.
             saveEmailForScheduling(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, sender, title, content, dateSent]));
         }
-        //Contruction of row in the table with emails.
-
-        //titleColumn.textContent = title;
-        //toColumn.textContent = recipient;
-        //fromColumn.textContent = sender;
-        //dateColumn.textContent = new Date(dateSent).toLocaleString();
     }
     else {
-        document.getElementById("form-error-alert").style.display = "block";
+        displayAlert("form-error-alert");
     }
 }
 
@@ -81,9 +76,11 @@ function saveDraft() {
         var account = JSON.parse(localStorage.getItem(sender));
         var dateSent = Date.now();
         saveEmailToDrafts(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, sender, title, content, dateSent]));
+        clearForm();
+        displayAlert("drafts-success-alert");
     }
     else {
-        document.getElementById("form-error-alert").style.display = "block";
+        displayAlert("form-error-alert");
     }
 }
 
@@ -100,5 +97,20 @@ function saveEmailForScheduling(title, date_sent, contentAsJsonString) {
 }
 
 function dismissAlert(alertID) {
-    document.getElementById(alertID).style.display = "none";
+    document.getElementById(alertID).classList.remove("display-block");
+    document.getElementById(alertID).classList.add("display-none");
+}
+
+function displayAlert(alertID) {
+    document.getElementById(alertID).classList.add("display-block");
+    document.getElementById(alertID).classList.remove("display-none");
+}
+
+/// <summary>
+/// Method for clearing all form inputs.
+/// </summary>
+function clearForm() {
+    document.getElementById("email-title").value = "";
+    document.getElementById("email-recipient").value = "";
+    document.getElementById("email-content").value = "";
 }

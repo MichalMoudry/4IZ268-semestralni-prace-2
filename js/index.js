@@ -77,6 +77,7 @@ $(document).ready(function () {
 });
 
 function dismissAlert(alertID) {
+    document.getElementById(alertID).classList.remove("display-block");
     document.getElementById(alertID).classList.add("display-none");
 }
 
@@ -98,7 +99,10 @@ function sendScheduledEmails() {
             Body : account[6]
         });
         saveSentEmail(account[5], account[7], JSON.stringify([account[0], account[3], account[4], account[5], account[6], account[7]]));
-        document.getElementById("send-success-alert").style.display = "block";
         localStorage.removeItem(scheduledEmailKey);
     });
+}
+
+function saveSentEmail(title, date_sent, contentAsJsonString) {
+    localStorage.setItem("sent_" + title + date_sent + "", contentAsJsonString);
 }
