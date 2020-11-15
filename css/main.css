@@ -28,6 +28,7 @@
     border-radius: 5px;
     padding: 5px;
     padding-top: 10px;
+    justify-content: space-between;
 }
 
 .email-list-item:hover {
@@ -38,6 +39,7 @@
 .email-list-item-content {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .to-paragraph {
@@ -49,6 +51,12 @@
 .email-list-title {
     font-size: 1.1rem;
     font-weight: bold;
+}
+
+.email-list-item-date {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0px;
 }
 
 .ellipse {

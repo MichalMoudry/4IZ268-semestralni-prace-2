@@ -23,6 +23,7 @@ $(document).ready(function () {
         //Variables for content holders.
         var titleP;
         var toP;
+        var dateP;
         var ellipse;
         var initialsP;
         var firstInitial;
@@ -36,6 +37,7 @@ $(document).ready(function () {
             titleDiv = document.createElement("div");
             toDiv = document.createElement("div");
             dateDiv = document.createElement("div");
+            dateP = document.createElement("p");
             itemContent = document.createElement("div");
             itemContent.classList.add("email-list-item-content");
             titleP = document.createElement("p");
@@ -51,6 +53,8 @@ $(document).ready(function () {
             toDiv.appendChild(toP);
             itemContent.appendChild(toDiv);
 
+            itemContainer.setAttribute("onclick", "navigateToEmailView('" + emailDataAsJson[3].replace(/ /g, "-") + "_" + emailDataAsJson[5] + "');");
+
             ellipse = document.createElement("div");
             ellipse.classList.add("ellipse");
             toSplit = emailDataAsJson[1].toString().split("@")[0].split(".");
@@ -59,6 +63,11 @@ $(document).ready(function () {
             initialsP.textContent = firstInitial + secondInitial;
             ellipse.appendChild(initialsP);
             logoDiv.appendChild(ellipse);
+
+            dateP.textContent = new Date(emailDataAsJson[5]).toLocaleDateString();
+            dateP.classList.add("email-list-item-date");
+            dateDiv.appendChild(dateP);
+            itemContainer.appendChild(dateDiv);
 
             itemContainer.appendChild(logoDiv);
             itemContainer.appendChild(itemContent);
@@ -83,6 +92,10 @@ function dismissAlert(alertID) {
 
 function navigateToNewEmailPage() {
     window.location.href = "./newmail/";
+}
+
+function navigateToEmailView(emailID) {
+    window.location.href = "./email/?id=" + emailID;
 }
 
 function sendScheduledEmails() {
