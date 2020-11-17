@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var localstorageKeys = Object.keys(localStorage);
-    accounts = localstorageKeys.filter(element => !element.includes("sent_") && !element.includes("draft_") && !element.includes("scheduled_"));
+    var accounts = localstorageKeys.filter(element => !element.includes("sent_") && !element.includes("draft_") && !element.includes("scheduled_"));
     var displayItemDiv;
     var accountsList = document.getElementById("accounts-list");
     var nameDiv;
