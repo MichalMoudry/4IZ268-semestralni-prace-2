@@ -60,6 +60,7 @@ nav ul li {
 #app-logo {
     width: 70px;
     margin-top: -10px;
+    margin-left: -6px;
 }
 
 .display-none {

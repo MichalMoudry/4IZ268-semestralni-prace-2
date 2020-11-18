@@ -47,9 +47,11 @@
 <body>
     <div class="main">
         <header>
-            <a href="./" class="mainpage-link" title="Main page">
-                <h1><i class="fa fa-paper-plane"></i> Email Sender</h1>
-            </a>
+            <h1>
+                <a href="./" class="mainpage-link" title="Main page">
+                    <img src="../assets/email-sender-logo.svg" id="app-logo" alt="Application logo" class="mr-2" />Email Sender
+                </a>
+            </h1>
             <nav>
                 <ul>
                     <li>
@@ -102,14 +104,18 @@
                 <input type="text" disabled="true" placeholder="Display name..." id="account-displayname" class="form-control" />
             </div>
 
-            <button type="button" class="btn btn-outline-success mb-3" onclick="editAccount();">
+            <button class="btn btn-outline-success mr-3" onclick="editAccount();">
                 <i class="fa fa-check"></i> Edit
+            </button>
+
+            <button class="btn btn-outline-danger" onclick="deleteAccount();">
+                <i class="fa fa-trash"></i> Delete
             </button>
         </main>
     
         <footer>
             <div class="alert alert-success mt-3" role="alert" id="account-edit-success">
-                Account has been successfuly edited. <a href="./" title="Main page">Go to home page.</a>
+                Account has been successfuly edited. <a href="./" title="Main page" class="alert-link">Go to home page.</a>
             </div>
 
             <div class="alert alert-danger mt-3" role="alert" id="account-edit-error">

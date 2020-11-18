@@ -2,17 +2,19 @@ var userID;
 var userData = { smtp_server: "", smtp_username: "", smtp_password: "" };
 
 $(document).ready(function () {
-    userID = window.location.search.substr(1).split("=")[1].replace(/%20/g, " ");
-    if (userID != null || userID != "") {
-        document.getElementById("title-account-name").textContent = userID;
-        document.getElementById("account-displayname").value = userID;
-        var userDataAsJsonObj = JSON.parse(localStorage.getItem(userID));
-        userData["smtp_server"] = userDataAsJsonObj[0];
-        userData["smtp_username"] = userDataAsJsonObj[1];
-        userData["smtp_password"] = userDataAsJsonObj[2];
-        document.getElementById("account-host").value = userData["smtp_server"];
-        document.getElementById("account-username").value = userData["smtp_username"];
-        document.getElementById("account-password").value = userData["smtp_password"];
+    if (window.location.search.substr(1) != "") {
+        userID = window.location.search.substr(1).split("=")[1].replace(/%20/g, " ");
+        if (userID != null || userID != "") {
+            document.getElementById("title-account-name").textContent = userID;
+            document.getElementById("account-displayname").value = userID;
+            var userDataAsJsonObj = JSON.parse(localStorage.getItem(userID));
+            userData["smtp_server"] = userDataAsJsonObj[0];
+            userData["smtp_username"] = userDataAsJsonObj[1];
+            userData["smtp_password"] = userDataAsJsonObj[2];
+            document.getElementById("account-host").value = userData["smtp_server"];
+            document.getElementById("account-username").value = userData["smtp_username"];
+            document.getElementById("account-password").value = userData["smtp_password"];
+        }
     }
 });
 
@@ -31,4 +33,9 @@ function editAccount() {
         document.getElementById("account-edit-error").style.display = "block";
         document.getElementById("account-edit-success").style.display = "none";
     }
+}
+
+function deleteAccount() {
+    localStorage.removeItem(userID);
+    window.location.href = "https://michalmoudry.github.io/4IZ268-semestralni-prace-2/accounts/";
 }

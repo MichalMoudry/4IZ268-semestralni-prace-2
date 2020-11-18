@@ -1,18 +1,39 @@
+.accounts-list-item {
+    margin-top: -12px;
+}
+
 .accounts-list-item:hover {
     cursor: pointer;
     background-color: #f2f2f2;
 }
 
-.accounts-list-item div {
-    margin: auto;
+.name-div {
     height: 3rem;
     border-radius: 5px;
     margin-top: 12px;
+    width: 95%;
 }
 
 .accounts-list-item div p {
     padding-left: 15px;
     padding-top: 10px;
+}
+
+hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.button-div {
+    float: right;
+    margin-top: -36px;
+    width: 5%;
+}
+
+.button {
+    border-radius: 5px;
+    border: 0px;
+    background: white;
 }
 
 @media (min-width: 1201px) {
