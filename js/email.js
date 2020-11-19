@@ -2,6 +2,8 @@ var email = { id: "", title: "", date: "", content: "", to: "", from: "" };
 
 $(document).ready(function () {
     if (window.location.search.substr(1) != "") {
+        var textArea = document.getElementById("email-content");
+        textArea.style.height = textArea.scrollHeight + "px";
         var localstorageKeys = Object.keys(localStorage);
         var emails = localstorageKeys.filter(element => element.includes("sent_") || element.includes("draft_") || element.includes("scheduled_"));
         email["id"] = window.location.search.substr(1).split("=")[1];
@@ -11,7 +13,7 @@ $(document).ready(function () {
         var emailAsJson = JSON.parse(localStorage.getItem(emails.filter(element => element.includes(email["date"]))));
         document.getElementById("email-from").textContent = emailAsJson[2];
         document.getElementById("email-to").textContent = emailAsJson[1];
-        document.getElementById("email-content").textContent = emailAsJson[4];
+        textArea.textContent = emailAsJson[4];
         console.log(emailAsJson);
     }
 });
