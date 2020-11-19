@@ -6,7 +6,6 @@ $(document).ready(function () {
         userID = window.location.search.substr(1).split("=")[1].replace(/%20/g, " ");
         if (userID != null || userID != "") {
             document.getElementById("title-account-name").textContent = userID;
-            document.getElementById("account-displayname").value = userID;
             var userDataAsJsonObj = JSON.parse(localStorage.getItem(userID));
             userData["smtp_server"] = userDataAsJsonObj[0];
             userData["smtp_username"] = userDataAsJsonObj[1];
