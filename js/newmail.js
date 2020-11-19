@@ -114,3 +114,7 @@ function clearForm() {
     document.getElementById("email-recipient").value = "";
     document.getElementById("email-content").value = "";
 }
+
+function discardEmail() {
+    window.location.href = "./";
+}

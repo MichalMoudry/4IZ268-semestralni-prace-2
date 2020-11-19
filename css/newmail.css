@@ -10,10 +10,6 @@
     margin-right: 10px;
 }
 
-.alert {
-    display: none;
-}
-
 #email-content {
     min-height: 8rem;
 }

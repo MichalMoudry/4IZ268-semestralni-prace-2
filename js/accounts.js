@@ -10,6 +10,8 @@ var buttonDiv;
 var button;
 var buttonContent;
 var dropdownMenu;
+var iconDiv;
+var icon;
 
 $(document).ready(function () {
     accountsList = document.getElementById("accounts-list");
@@ -24,19 +26,25 @@ function addAccount() {
     var smtp_server = document.getElementById("account-host").value;
     var smtp_username = document.getElementById("account-username").value;
     var smtp_password = document.getElementById("account-password").value;
-    var displayName = document.getElementById("account-displayname").value;
-    if (smtp_password != "" && smtp_username != "" && smtp_server != "" && displayName != "") {
-        if (localStorage.getItem(displayName) == null) {
-            createAccountDiv(displayName);
-            localStorage.setItem(displayName, JSON.stringify([smtp_server, smtp_username, smtp_password, Date.now()]));
+    if (smtp_password != "" && smtp_username != "" && smtp_server != "") {
+        if (localStorage.getItem(smtp_username) == null) {
+            createAccountDiv(smtp_username);
+            dismissAlert("account-added-error");
+            displayAlert("account-added-success");
+            localStorage.setItem(smtp_username, JSON.stringify([smtp_server, smtp_username, smtp_password, Date.now()]));
+            clearForm();
         }
         else {
             console.error("Account already exists.");
+            displayAlert("account-added-error");
+            dismissAlert("account-added-success");
             //Account already exists.
         }
     }
-    else{
-        console.log("Form for adding a new account is empty.");
+    else {
+        console.error("Form for adding a new account is empty.");
+        displayAlert("account-added-error");
+        dismissAlert("account-added-success");
         //Inputs are empty.
     }
 }
@@ -99,7 +107,15 @@ function createAccountDiv(displayName) {
     dropdownMenu.appendChild(editLink);
     dropdownMenu.appendChild(deleteLink);
     buttonDiv.appendChild(dropdownMenu);
+
+    iconDiv = document.createElement("div");
+    iconDiv.classList.add("icon-div");
+    icon = document.createElement("i");
+    icon.classList.add("fa");
+    icon.classList.add("fa-user-circle");
+    iconDiv.appendChild(icon);
     
+    displayItemDiv.appendChild(iconDiv);
     displayItemDiv.appendChild(nameDiv);
     displayItemDiv.appendChild(buttonDiv);
     displayItemDiv.appendChild(document.createElement("hr"));
@@ -109,4 +125,20 @@ function createAccountDiv(displayName) {
 function deleteAccount(accountName) {
     localStorage.removeItem(accountName);
     accountsList.removeChild(document.getElementById(accountName + "-list-item"));
+}
+
+function dismissAlert(alertID) {
+    document.getElementById(alertID).classList.remove("display-block");
+    document.getElementById(alertID).classList.add("display-none");
+}
+
+function displayAlert(alertID) {
+    document.getElementById(alertID).classList.add("display-block");
+    document.getElementById(alertID).classList.remove("display-none");
+}
+
+function clearForm() {
+    document.getElementById("account-host").value = "";
+    document.getElementById("account-username").value = "";
+    document.getElementById("account-password").value = "";
 }

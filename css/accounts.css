@@ -11,7 +11,13 @@
     height: 3rem;
     border-radius: 5px;
     margin-top: 12px;
-    width: 95%;
+    padding-left: 15px;
+}
+
+.icon-div {
+    float: left;
+    margin-left: 5px;
+    margin-top: 10px;
 }
 
 .accounts-list-item div p {
@@ -27,13 +33,16 @@ hr {
 .button-div {
     float: right;
     margin-top: -36px;
-    width: 5%;
+    width: 6%;
 }
 
 .button {
     border-radius: 5px;
     border: 0px;
+    height: 40px;
+    width: 40px;
     background: white;
+    margin-top: -10px;
 }
 
 @media (min-width: 1201px) {
