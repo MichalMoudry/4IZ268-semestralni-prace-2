@@ -1,5 +1,6 @@
 .accounts-list-item {
     margin-top: -12px;
+    border-radius: 5px;
 }
 
 .accounts-list-item:hover {
@@ -33,7 +34,7 @@ hr {
 .button-div {
     float: right;
     margin-top: -36px;
-    width: 6%;
+    width: 50px;
 }
 
 .button {
