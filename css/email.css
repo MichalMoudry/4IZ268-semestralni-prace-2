@@ -1,6 +1,34 @@
 textarea {
     width: 100%;
     background: white;
-    padding: 10px;
     resize: none;
+    border: 0px;
+}
+
+.info-text {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.button {
+    border-radius: 5px;
+    border: 0px;
+    height: 30px;
+    width: 40px;
+    background: white;
+    margin-top: -10px;
+}
+
+.button:hover {
+    border: 1px solid;
+}
+
+.button-div {
+    float: right;
+    width: 50px;
+    margin-top: -36px;
+}
+
+.dropdown-menu a:hover {
+    cursor: pointer;
 }
