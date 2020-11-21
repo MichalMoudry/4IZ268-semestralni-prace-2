@@ -127,16 +127,6 @@ function deleteAccount(accountName) {
     accountsList.removeChild(document.getElementById(accountName + "-list-item"));
 }
 
-function dismissAlert(alertID) {
-    document.getElementById(alertID).classList.remove("display-block");
-    document.getElementById(alertID).classList.add("display-none");
-}
-
-function displayAlert(alertID) {
-    document.getElementById(alertID).classList.add("display-block");
-    document.getElementById(alertID).classList.remove("display-none");
-}
-
 function clearForm() {
     document.getElementById("account-host").value = "";
     document.getElementById("account-username").value = "";

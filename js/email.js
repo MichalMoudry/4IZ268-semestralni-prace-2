@@ -4,7 +4,7 @@ $(document).ready(function () {
     if (window.location.search.substr(1) != "") {
         var textArea = document.getElementById("email-content");
         var localstorageKeys = Object.keys(localStorage);
-        var emails = localstorageKeys.filter(element => element.includes("sent_") || element.includes("draft_") || element.includes("scheduled_"));
+        var emails = localstorageKeys.filter(element => element.includes("sent_"));
         email["id"] = window.location.search.substr(1).split("=")[1];
         email["title"] = email["id"].replace(/-/g, " ").split("_")[0];
         email["date"] = email["id"].split("_")[1];

@@ -7,8 +7,68 @@
     margin-bottom: 0px;
 }
 
+.email-list-item {
+    display: flex;
+    border-radius: 5px;
+    padding: 5px;
+    padding-top: 10px;
+    justify-content: space-between;
+}
+
+.email-list-item:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.email-list-item-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.to-paragraph {
+    margin-top: -20px;
+    font-size: 0.85rem;
+    margin-bottom: 0rem;
+}
+
+.email-list-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.email-list-item-date {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0px;
+}
+
+.ellipse {
+    width: 45px;
+    background: linear-gradient(90deg, rgba(114,144,223,1) 0%, rgba(59,94,186,1) 98%);
+    height: 45px;
+    border-radius: 25px;
+    margin-right: 10px;
+    color: white;
+}
+
+.ellipse p {
+    float: left;
+    margin-top: 9.3px;
+    margin-left: 7.3px;
+    font-weight: bold;
+}
+
+hr:last-child {
+    display: none;
+}
+
 @media (min-width: 1201px) {
     .alert {
         width: 65%;
+    }
+
+    .email-list-item-content {
+        width: 85%;
     }
 }

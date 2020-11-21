@@ -1,12 +1,4 @@
 $(document).ready(function () {
-    window.addEventListener("online", function () {
-        dismissAlert("network-connection-alert");
-        //When network connection is detected, then send all scheduled emails
-        //sendScheduledEmails();
-    });
-    window.addEventListener("offline", function () {
-        displayAlert("network-connection-alert");
-    });
     document.getElementById("email-content").textContent = "";
     var keys = Object.keys(localStorage);
     var userIDs = keys.filter(element => !element.includes("sent_") && !element.includes("draft_") && !element.includes("scheduled_"));
@@ -88,22 +80,8 @@ function saveEmailToDrafts(title, date_created, contentAsJsonString) {
     localStorage.setItem("draft_" + title + date_created + "", contentAsJsonString);
 }
 
-function saveSentEmail(title, date_sent, contentAsJsonString) {
-    localStorage.setItem("sent_" + title + date_sent + "", contentAsJsonString);
-}
-
 function saveEmailForScheduling(title, date_sent, contentAsJsonString) {
     localStorage.setItem("scheduled_" + title + date_sent + "", contentAsJsonString);
-}
-
-function dismissAlert(alertID) {
-    document.getElementById(alertID).classList.remove("display-block");
-    document.getElementById(alertID).classList.add("display-none");
-}
-
-function displayAlert(alertID) {
-    document.getElementById(alertID).classList.add("display-block");
-    document.getElementById(alertID).classList.remove("display-none");
 }
 
 /// <summary>
