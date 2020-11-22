@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var keys = Object.keys(localStorage);
-    var sentEmails = keys.filter(element => element.includes("sent_"));
+    var sentEmails = keys.filter(element => element.includes("sent_")).sort().reverse();
     //If user sent any emails then display them in UI.
     if (sentEmails.length > 0) {
         //Container variables.

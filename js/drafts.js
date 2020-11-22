@@ -1,9 +1,9 @@
 $(document).ready(function () {
     var localStorageKeys = Object.keys(localStorage);
-    var draftKeys = localStorageKeys.filter(element => element.includes("draft_"));
+    var draftKeys = localStorageKeys.filter(element => element.includes("draft_")).sort();
     var draftAsJson;
     if (draftKeys.length <= 0) {
-        document.getElementById("no-drafts-text").classList.remove("display-none");
+        displayAlert("no-drafts-text");
     }
     else {
         //Container variables.
