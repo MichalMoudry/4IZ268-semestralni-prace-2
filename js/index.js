@@ -28,6 +28,7 @@ $(document).ready(function () {
             titleDiv = document.createElement("div");
             toDiv = document.createElement("div");
             dateDiv = document.createElement("div");
+            dateDiv.classList.add("date-div");
             dateP = document.createElement("p");
             itemContent = document.createElement("div");
             itemContent.classList.add("email-list-item-content");

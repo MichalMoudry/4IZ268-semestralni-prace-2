@@ -1,0 +1,9 @@
+#email-content {
+    min-height: 7rem;
+}
+
+@media (min-width: 1201px) {
+    #email-content {
+        min-height: 9rem;
+    }
+}

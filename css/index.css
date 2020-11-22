@@ -44,10 +44,15 @@
     font-weight: bold;
 }
 
+.date-div {
+    width: 25%;
+}
+
 .email-list-item-date {
     font-weight: bold;
     font-size: 0.9rem;
     margin-bottom: 0px;
+    float: right;
 }
 
 .ellipse {

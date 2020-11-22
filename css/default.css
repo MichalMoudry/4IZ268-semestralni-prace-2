@@ -74,6 +74,10 @@ nav ul li {
     display: none;
 }
 
+.text-blue {
+    color: #2196F3;
+}
+
 @media (min-width: 1201px) {
     .main {
         width: 65%;
