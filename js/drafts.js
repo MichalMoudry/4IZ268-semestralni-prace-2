@@ -58,7 +58,7 @@ $(document).ready(function () {
             ellipse.appendChild(initialsP);
             logoDiv.appendChild(ellipse);
 
-            dateP.textContent = new Date(draftAsJson[7]).toLocaleDateString();
+            dateP.textContent = new Date(draftAsJson[6]).toLocaleDateString();
             dateP.classList.add("email-list-item-date");
             dateDiv.appendChild(dateP);
             itemContainer.appendChild(dateDiv);

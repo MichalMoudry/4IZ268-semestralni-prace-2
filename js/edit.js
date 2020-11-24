@@ -17,9 +17,9 @@ $(document).ready(function () {
             res = regex.test(element);
             if (res) {
                 emailAsJson = JSON.parse(localStorage.getItem(element));
-                email["title"] = emailAsJson[5];
+                email["title"] = emailAsJson[4];
                 email["to"] = emailAsJson[3];
-                email["content"] = emailAsJson[4];
+                email["content"] = emailAsJson[5];
                 account["server"] = emailAsJson[0];
                 account["username"] = emailAsJson[1];
                 account["password"] = emailAsJson[2];
