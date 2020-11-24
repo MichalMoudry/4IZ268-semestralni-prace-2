@@ -21,6 +21,6 @@ $(document).ready(function () {
 });
 
 function discardEmail() {
-    localStorage.removeItem("sent_" + email["title"] + email["date"]);
+    localStorage.removeItem("sent_" + email["title"] + "_" + email["date"]);
     window.location.href = "./";
 }

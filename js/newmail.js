@@ -67,7 +67,7 @@ function saveDraft() {
     if (title != "" && recipient != "" && content != "" && sender != "") {
         var account = JSON.parse(localStorage.getItem(sender));
         var dateSent = Date.now();
-        saveEmailToDrafts(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, sender, title, content, dateSent]));
+        saveEmailToDrafts(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, title, content, dateSent]));
         clearForm();
         displayAlert("drafts-success-alert");
         dismissAlert("form-error-alert");
@@ -78,11 +78,11 @@ function saveDraft() {
 }
 
 function saveEmailToDrafts(title, date_created, contentAsJsonString) {
-    localStorage.setItem("draft_" + title + date_created + "", contentAsJsonString);
+    localStorage.setItem("draft_" + title + "_" + date_created, contentAsJsonString);
 }
 
 function saveEmailForScheduling(title, date_sent, contentAsJsonString) {
-    localStorage.setItem("scheduled_" + title + date_sent + "", contentAsJsonString);
+    localStorage.setItem("scheduled_" + title + "_" + date_sent, contentAsJsonString);
 }
 
 /// <summary>

@@ -29,7 +29,7 @@ function sendScheduledEmails() {
 }
 
 function saveSentEmail(title, date_sent, contentAsJsonString) {
-    localStorage.setItem("sent_" + title + date_sent + "", contentAsJsonString);
+    localStorage.setItem("sent_" + title + "_" + date_sent, contentAsJsonString);
 }
 
 function dismissAlert(alertID) {
