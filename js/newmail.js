@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    document.getElementById("email-content").textContent = "";
+    $("textarea").text("");
     var keys = Object.keys(localStorage);
     var userIDs = keys.filter(element => !element.includes("sent_") && !element.includes("draft_") && !element.includes("scheduled_"));
     //If user created more accounts then fill UI with options and links.
@@ -20,10 +20,10 @@ $(document).ready(function () {
 /// Method for handling onclick event that triggers sending of an email.
 /// </summary>
 function sendEmail() {
-    var sender = document.getElementById("email-sender").value;
-    var title = document.getElementById("email-title").value;
-    var recipient = document.getElementById("email-recipient").value;
-    var content = document.getElementById("email-content").value;
+    var sender = $("#email-sender").val();
+    var title = $("#email-title").val();
+    var recipient = $("#email-recipient").val();
+    var content = $("#email-content").val();
     if (title != "" && recipient != "" && content != "" && sender != "") {
         //Set date when email was sent.
         var dateSent = Date.now();
@@ -60,16 +60,17 @@ function sendEmail() {
 /// Method for handling onclick event that triggers saving of an email to drafts.
 /// </summary>
 function saveDraft() {
-    var sender = document.getElementById("email-sender").value;
-    var title = document.getElementById("email-title").value;
-    var recipient = document.getElementById("email-recipient").value;
-    var content = document.getElementById("email-content").value;
+    var sender = $("#email-sender").val();
+    var title = $("#email-title").val();
+    var recipient = $("#email-recipient").val();
+    var content = $("#email-content").val();
     if (title != "" && recipient != "" && content != "" && sender != "") {
         var account = JSON.parse(localStorage.getItem(sender));
         var dateSent = Date.now();
         saveEmailToDrafts(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, sender, title, content, dateSent]));
         clearForm();
         displayAlert("drafts-success-alert");
+        dismissAlert("form-error-alert");
     }
     else {
         displayAlert("form-error-alert");
@@ -88,9 +89,9 @@ function saveEmailForScheduling(title, date_sent, contentAsJsonString) {
 /// Method for clearing all form inputs.
 /// </summary>
 function clearForm() {
-    document.getElementById("email-title").value = "";
-    document.getElementById("email-recipient").value = "";
-    document.getElementById("email-content").value = "";
+    $("#email-title").val("");
+    $("#email-recipient").val("");
+    $("#email-content").val("");
 }
 
 function discardEmail() {

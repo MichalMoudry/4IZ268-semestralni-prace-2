@@ -9,7 +9,7 @@ $(document).ready(function () {
         var emailIdentifiers = document.getElementsByClassName("email-identifier-span");
         if (draftsAndScheduled.includes("draft_" + emailKey)) {
             for (let n = 0; n < emailIdentifiers.length; n++) {
-                emailIdentifiers[n].textContent = " draft";
+                emailIdentifiers[n].text(" draft");
             }
         }
         email["title"] = email["id"].replace(/-/g, " ").split("_")[0];

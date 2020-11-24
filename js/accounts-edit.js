@@ -5,32 +5,31 @@ $(document).ready(function () {
     if (window.location.search.substr(1) != "") {
         userID = window.location.search.substr(1).split("=")[1].replace(/%20/g, " ");
         if (userID != null || userID != "") {
-            document.getElementById("title-account-name").textContent = userID;
+            $("#title-account-name").text(userID);
             var userDataAsJsonObj = JSON.parse(localStorage.getItem(userID));
             userData["smtp_server"] = userDataAsJsonObj[0];
             userData["smtp_username"] = userDataAsJsonObj[1];
             userData["smtp_password"] = userDataAsJsonObj[2];
-            document.getElementById("account-host").value = userData["smtp_server"];
-            document.getElementById("account-username").value = userData["smtp_username"];
-            document.getElementById("account-password").value = userData["smtp_password"];
+            $("#account-host").val(userData["smtp_server"]);
+            $("#account-username").val(userData["smtp_username"]);
+            $("#account-password").val(userData["smtp_password"]);
         }
     }
 });
 
 function editAccount() {
-    userData["smtp_server"] = document.getElementById("account-host").value;
-    userData["smtp_username"] = document.getElementById("account-username").value;
-    userData["smtp_password"] = document.getElementById("account-password").value;
+    userData["smtp_server"] = $("account-host").val();
+    userData["smtp_username"] = $("account-username").val();
+    userData["smtp_password"] = $("account-password").val();
     if (userData["smtp_server"] != "" && userData["smtp_username"] != "" && userData["smtp_password"] != "") {
         localStorage.removeItem(userID);
         localStorage.setItem(userID, JSON.stringify([userData["smtp_server"], userData["smtp_username"], userData["smtp_password"], Date.now()]));
-        document.getElementById("account-edit-success").style.display = "block";
-        document.getElementById("account-edit-error").style.display = "none";
+        displayAlert("account-edit-success");
+        dismissAlert("account-edit-error");
     }
     else {
-        console.error("Form inputs are empty.");
-        document.getElementById("account-edit-error").style.display = "block";
-        document.getElementById("account-edit-success").style.display = "none";
+        displayAlert("account-edit-error");
+        dismissAlert("account-edit-success");
     }
 }
 

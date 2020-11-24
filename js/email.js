@@ -9,7 +9,7 @@ $(document).ready(function () {
         email["title"] = email["id"].replace(/-/g, " ").split("_")[0];
         email["date"] = email["id"].split("_")[1];
         document.title = email["title"] + " - Email Sender";
-        document.getElementById("email-title").textContent = email["title"];
+        $("#email-title").text(email["title"]);
         var emailAsJson = JSON.parse(localStorage.getItem(emails.filter(element => element.includes(email["date"]))));
         email["date"] = emailAsJson[5];
         document.getElementById("email-from").textContent = emailAsJson[2];

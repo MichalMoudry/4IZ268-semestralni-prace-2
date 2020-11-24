@@ -23,9 +23,9 @@ $(document).ready(function () {
 });
 
 function addAccount() {
-    var smtp_server = document.getElementById("account-host").value;
-    var smtp_username = document.getElementById("account-username").value;
-    var smtp_password = document.getElementById("account-password").value;
+    var smtp_server = $("#account-host").val();
+    var smtp_username = $("#account-username").val();
+    var smtp_password = $("#account-password").val();
     if (smtp_password != "" && smtp_username != "" && smtp_server != "") {
         if (localStorage.getItem(smtp_username) == null) {
             createAccountDiv(smtp_username);
@@ -35,14 +35,12 @@ function addAccount() {
             clearForm();
         }
         else {
-            console.error("Account already exists.");
             displayAlert("account-added-error");
             dismissAlert("account-added-success");
             //Account already exists.
         }
     }
     else {
-        console.error("Form for adding a new account is empty.");
         displayAlert("account-added-error");
         dismissAlert("account-added-success");
         //Inputs are empty.
@@ -50,8 +48,6 @@ function addAccount() {
 }
 
 function navigateToEditPage(userID) {
-    //window.location.href = "./accounts/edit/?userID=" + userID;          pro GitHub pages
-    //window.location.href = "./edit/?userID=" + userID;                   pro lokální prostředí
     window.location.href = "./accounts/edit/?userID=" + userID; 
 }
 
@@ -128,7 +124,7 @@ function deleteAccount(accountName) {
 }
 
 function clearForm() {
-    document.getElementById("account-host").value = "";
-    document.getElementById("account-username").value = "";
-    document.getElementById("account-password").value = "";
+    $("#account-host").val("");
+    $("#account-username").val("");
+    $("#account-password").val("");
 }
