@@ -40,14 +40,14 @@ $(document).ready(function () {
             toP.classList.add("to-paragraph");
             initialsP = document.createElement("p");
 
-            titleP.textContent = draftAsJson[5];
+            titleP.textContent = draftAsJson[4];
             titleDiv.appendChild(titleP);
             itemContent.appendChild(titleDiv);
             toP.textContent = "To: " + draftAsJson[3];
             toDiv.appendChild(toP);
             itemContent.appendChild(toDiv);
 
-            itemContainer.setAttribute("onclick", "navigateToDraftEditView('" + draftAsJson[5].replace(/ /g, "-") + "_" + draftAsJson[7] + "');");
+            itemContainer.setAttribute("onclick", "navigateToDraftEditView('" + draftAsJson[4].replace(/ /g, "-") + "_" + draftAsJson[6] + "');");
             
             ellipse = document.createElement("div");
             ellipse.classList.add("ellipse");
