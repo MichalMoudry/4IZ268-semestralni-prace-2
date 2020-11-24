@@ -34,6 +34,9 @@ function editAccount() {
 }
 
 function deleteAccount() {
-    localStorage.removeItem(userID);
-    window.location.href = "https://michalmoudry.github.io/4IZ268-semestralni-prace-2/accounts/";
+    var confirmRes = confirm("Do you want to delete " + userData["smtp_username"] + " account?");
+    if (confirmRes === true) {
+        localStorage.removeItem(userID);
+        window.location.href = "https://michalmoudry.github.io/4IZ268-semestralni-prace-2/accounts/";
+    }
 }

@@ -119,8 +119,11 @@ function createAccountDiv(displayName) {
 }
 
 function deleteAccount(accountName) {
-    localStorage.removeItem(accountName);
-    accountsList.removeChild(document.getElementById(accountName + "-list-item"));
+    var confirmRes = confirm("Do you want to delete " + accountName + " account?");
+    if (confirmRes === true) {
+        localStorage.removeItem(accountName);
+        accountsList.removeChild(document.getElementById(accountName + "-list-item"));
+    }
 }
 
 function clearForm() {
