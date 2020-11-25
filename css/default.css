@@ -37,14 +37,13 @@ main {
     text-decoration: none;
 }
 
-nav ul {
-    display: flex;
-    list-style-type: none;
-    padding-inline-start: 0px;
+.navbar {
+    padding: 0;
 }
 
-nav ul li {
-    margin-right: 15px;
+.navbar-toggler {
+    font-size: 2rem;
+    margin-top: 1.3rem;
 }
 
 .inactive-link {
@@ -56,8 +55,8 @@ nav ul li {
 }
 
 #app-logo {
-    width: 70px;
-    margin-top: -10px;
+    width: 55px;
+    margin-top: -13px;
     margin-left: -6px;
 }
 
@@ -81,5 +80,27 @@ nav ul li {
 @media (min-width: 1201px) {
     .main {
         width: 65%;
+    }
+}
+
+@media (max-width: 991px) {
+    nav ul li {
+        margin-top: 10px;
+    }
+
+    nav ul li:first-child {
+        margin-top: 0px;
+    }
+
+    nav ul {
+        padding-left: 5px !important;
+        padding-right: 5px;
+        margin-bottom: 1rem !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #navbar-items {
+        margin-top: 21px;
     }
 }

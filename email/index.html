@@ -37,29 +37,41 @@
 <body>
     <div class="main">
         <header>
-            <h1>
-                <a href="./" class="mainpage-link" title="Main page">
-                    <img src="./assets/email-sender-logo.svg" id="app-logo" alt="Application logo" class="mr-2" />Email Sender
+            <nav class="navbar navbar-expand-lg">
+                <a href="./" class="navbar-brand mainpage-link" title="Main page">
+                    <h1>
+                        <img src="./assets/email-sender-logo.svg" id="app-logo" alt="Application logo" class="mr-1" />Email Sender
+                    </h1>
                 </a>
-            </h1>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="./" title="Sent emails" class="inactive-link"><i class="fa fa-inbox"></i> Sent emails</a>
-                    </li>
 
-                    <li>
-                        <a class="inactive-link" href="./drafts/" title="Drafts"><i class="fa fa-edit"></i> Drafts</a>
-                    </li>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items">
+                    <i class="fa fa-bars"></i>
+                </button>
 
-                    <li>
-                        <a class="inactive-link" href="./user-guide/" title="User guider"><i class="fa fa-info-circle"></i> Guide</a>
-                    </li>
-
-                    <li>
-                        <a class="inactive-link" href="./accounts/"><i class="fa fa-user"></i> Accounts</a>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse" id="navbar-items">
+                    <div class="mr-auto"></div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="./" title="Sent emails" class="inactive-link nav-link"><i class="fa fa-inbox"></i> Sent emails</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="inactive-link nav-link" href="./drafts/" title="Drafts"><i class="fa fa-edit"></i> Drafts</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="inactive-link nav-link" href="./sent-items/" title="Scheduled emails"><i class="fa fa-calendar"></i> Scheduled emails</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="inactive-link nav-link" href="./user-guide/" title="User guider"><i class="fa fa-info-circle"></i> User guide</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="inactive-link nav-link" href="./accounts/"><i class="fa fa-user"></i> Accounts</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </header>
 

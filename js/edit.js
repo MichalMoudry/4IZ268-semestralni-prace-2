@@ -43,6 +43,8 @@ function discardEmail() {
     var confirmRes = confirm("Do you want to delete " + email["title"] + " " + emailType + "?");
     if (confirmRes) {
         localStorage.removeItem(emailType + "_" + email["title"] + "_" + email["date"]);
-        window.location.href = "./";
+        if (emailType == "draft") {
+            window.location.href = "./drafts";
+        }
     }
 }
