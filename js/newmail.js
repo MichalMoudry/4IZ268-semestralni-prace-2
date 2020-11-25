@@ -48,6 +48,7 @@ function sendEmail() {
             displayAlert("send-success-alert");
         } catch (error) {
             //If error happened then schedule email for later.
+            clearForm();
             saveEmailForScheduling(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, sender, title, content, dateSent]));
         }
     }

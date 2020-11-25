@@ -39,12 +39,54 @@ $(document).ready(function () {
     }
 });
 
+function sendEmail() {
+    var title = $("#email-title").val();
+    var recipient = $("#email-recipient").val();
+    var content = $("").val();
+    if (title != "" && recipient != "" && content != "") {
+        var dateSent = Date.now();
+        try {
+            if (window.navigator.onLine === false) {
+                throw "Your device is offline";
+            }
+            Email.send({
+                Host : account["server"],
+                Username : account["username"],
+                Password : account["password"],
+                To : recipient,
+                From : account["username"],
+                Subject : title,
+                Body : content
+            });
+            saveSentEmail(title, dateSent, JSON.stringify([account["server"], recipient, account["username"], title, content, dateSent]));
+            navigateToIndexPage();
+        } catch (error) {
+            saveEmailForScheduling(title, dateSent, JSON.stringify([account["server"], account["username"], account["password"], recipient, account["username"], title, content, dateSent]));
+            navigateToIndexPage();
+        }
+    }
+    else {
+        //TODO: display alert
+    }
+}
+
 function discardEmail() {
     var confirmRes = confirm("Do you want to delete " + email["title"] + " " + emailType + "?");
     if (confirmRes) {
         localStorage.removeItem(emailType + "_" + email["title"] + "_" + email["date"]);
-        if (emailType == "draft") {
-            window.location.href = "./drafts";
-        }
+        navigateToIndexPage();
+    }
+}
+
+function saveEmailForScheduling(title, date_sent, contentAsJsonString) {
+    localStorage.setItem("scheduled_" + title + "_" + date_sent, contentAsJsonString);
+}
+
+function navigateToIndexPage() {
+    if (emailType == "draft") {
+        window.location.href = "./drafts";
+    }
+    else if (emailType == "scheduled") {
+        window.location.href = "./scheduled";
     }
 }
