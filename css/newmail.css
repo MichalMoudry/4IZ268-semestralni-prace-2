@@ -1,32 +1,8 @@
-.notification-area {
-    width: 100%;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
-.notification-area .alert {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
 #email-content {
     min-height: 7rem;
 }
 
 @media (min-width: 1201px) {
-    .notification-area {
-        width: 20%;
-        position: absolute;
-        bottom: 7px;
-        right: 0;
-        margin-right: 10px;
-    }
-
-    .notification-area .alert {
-        margin-left: 0px;
-    }
-
     #email-content {
         min-height: 9rem;
     }

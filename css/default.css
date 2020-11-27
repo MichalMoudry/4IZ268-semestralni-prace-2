@@ -81,9 +81,34 @@ main {
     color: #2196F3;
 }
 
+/*Notification area*/
+.notification-area {
+    width: 100%;
+    position: sticky;
+    right: 0;
+    bottom: 0;
+}
+
+.notification-area .alert {
+    margin-left: 13px;
+    margin-right: 13px;
+}
+
 @media (min-width: 1201px) {
     .main {
         width: 65%;
+    }
+
+    .notification-area {
+        width: 20%;
+        position: absolute;
+        bottom: 7px;
+        right: 0;
+        margin-right: 10px;
+    }
+
+    .notification-area .alert {
+        margin-left: 0px;
     }
 }
 
