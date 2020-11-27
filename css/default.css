@@ -43,7 +43,11 @@ main {
 
 .navbar-toggler {
     font-size: 2rem;
-    margin-top: 1.3rem;
+    margin-top: 2.7rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #f1f1f1;
 }
 
 .inactive-link {
@@ -102,5 +106,15 @@ main {
 @media (min-width: 992px) {
     #navbar-items {
         margin-top: 21px;
+    }
+}
+
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .navbar-toggler {
+        margin-top: 1.9rem;
     }
 }
