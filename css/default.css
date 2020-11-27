@@ -50,6 +50,10 @@ main {
     background-color: #f1f1f1;
 }
 
+.nav-link {
+    padding-top: 1.5rem;
+}
+
 .inactive-link {
     color: #3e3e3ea6;
 }
