@@ -17,8 +17,17 @@ $(document).ready(function () {
     accountsList = document.getElementById("accounts-list");
     var localstorageKeys = Object.keys(localStorage);
     var accounts = localstorageKeys.filter(element => !element.includes("sent_") && !element.includes("draft_") && !element.includes("scheduled_"));
+    var accountsAsString = "";
+    var accountAsJson;
     accounts.forEach(element => {
-        createAccountDiv(element);
+        accountAsJson = JSON.parse(localStorage.getItem(element));
+        accountsAsString += accountAsJson[1] + "_" + accountAsJson[3] + "&";
+    });
+    var accountsWithDates = accountsAsString.split("&");
+    accountsWithDates.pop();
+    accountsWithDates.sort().reverse();
+    accountsWithDates.forEach(element => {
+        createAccountDiv(element.split("_")[0]);
     });
 });
 
@@ -29,6 +38,7 @@ function addAccount() {
     if (smtp_password != "" && smtp_username != "" && smtp_server != "") {
         if (localStorage.getItem(smtp_username) == null) {
             createAccountDiv(smtp_username);
+            dismissAlert("account-deleted-success");
             dismissAlert("account-added-error");
             displayAlert("account-added-success");
             localStorage.setItem(smtp_username, JSON.stringify([smtp_server, smtp_username, smtp_password, Date.now()]));
@@ -37,12 +47,14 @@ function addAccount() {
         else {
             displayAlert("account-added-error");
             dismissAlert("account-added-success");
+            dismissAlert("account-deleted-success");
             //Account already exists.
         }
     }
     else {
         displayAlert("account-added-error");
         dismissAlert("account-added-success");
+        dismissAlert("account-deleted-success");
         //Inputs are empty.
     }
 }
@@ -121,6 +133,9 @@ function createAccountDiv(displayName) {
 function deleteAccount(accountName) {
     var confirmRes = confirm("Do you want to delete " + accountName + " account?");
     if (confirmRes === true) {
+        dismissAlert("account-added-success");
+        dismissAlert("account-added-error");
+        displayAlert("account-deleted-success");
         localStorage.removeItem(accountName);
         accountsList.removeChild(document.getElementById(accountName + "-list-item"));
     }

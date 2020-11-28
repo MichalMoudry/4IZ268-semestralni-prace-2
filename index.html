@@ -93,14 +93,12 @@
 
     <!--Notification area-->
     <div class="notification-area">
-        <div class="alert alert-info" role="alert" id="network-connection-alert">
+        <div class="alert alert-info alert-dismissible fade show" role="alert" id="network-connection-alert">
             Your network connection has been lost.
-            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('network-connection-alert');">
+            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('network-connection-alert');" title="Close this notification">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
     </div>
-
-    <!--TODO: Add modal for email view-->
 </body>
 </html>

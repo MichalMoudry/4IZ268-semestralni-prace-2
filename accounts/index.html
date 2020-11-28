@@ -100,22 +100,30 @@
                 <i class="fa fa-user-plus"></i> Add a new account
             </button>
         </main>
+    </div>
 
-        <footer>
-            <div class="alert alert-success mt-3 alert-dismissible fade show" role="alert" id="account-added-success">
-                Account has been successfuly added. <a href="./" title="Main page" class="alert-link">Go to home page.</a>
-                <button type="button" class="close" aria-label="Close" onclick="dismissAlert('account-added-success');">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+    <!--Notification area-->
+    <div class="notification-area">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="account-added-success">
+            Account has been successfuly added. <a href="./" title="Main page" class="alert-link">Go to home page.</a>
+            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('account-added-success');" title="Close this notification">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 
-            <div class="alert alert-danger mt-3 alert-dismissible fade show" role="alert" id="account-added-error">
-                Form is missing required information.
-                <button type="button" class="close" aria-label="Close" onclick="dismissAlert('account-added-error');">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </footer>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="account-deleted-success">
+            Account has been successfuly deleted.
+            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('account-added-success');" title="Close this notification">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="account-added-error">
+            Form is missing required information.
+            <button type="button" class="close" aria-label="Close" onclick="dismissAlert('account-added-error');" title="Close this notification">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     </div>
 
     <!--Modals-->
@@ -148,10 +156,10 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success" onclick="addAccount();" data-dismiss="modal">
+                    <button type="button" class="btn btn-outline-success" onclick="addAccount();" data-dismiss="modal" title="Create account">
                         <i class="fa fa-plus"></i> Add
                     </button>
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" aria-label="Close" title="Close this window">
                         Close
                     </button>
                 </div>
