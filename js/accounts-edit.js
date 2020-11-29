@@ -18,9 +18,9 @@ $(document).ready(function () {
 });
 
 function editAccount() {
-    userData["smtp_server"] = $("account-host").val();
-    userData["smtp_username"] = $("account-username").val();
-    userData["smtp_password"] = $("account-password").val();
+    userData["smtp_server"] = $("#account-host").val();
+    userData["smtp_username"] = $("#account-username").val();
+    userData["smtp_password"] = $("#account-password").val();
     if (userData["smtp_server"] != "" && userData["smtp_username"] != "" && userData["smtp_password"] != "") {
         localStorage.removeItem(userID);
         localStorage.setItem(userID, JSON.stringify([userData["smtp_server"], userData["smtp_username"], userData["smtp_password"], Date.now()]));

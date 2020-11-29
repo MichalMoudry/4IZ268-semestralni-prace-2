@@ -42,9 +42,12 @@ function addAccount() {
     var smtp_password = $("#account-password").val();
     if (smtp_password != "" && smtp_username != "" && smtp_server != "") {
         if (localStorage.getItem(smtp_username) == null) {
+            const regexp = new RegExp("(\d{3}.\d{3}.\d{3}.\d{3}|.*@.*[.]\w{2,3})", "g");
+            console.log(regexp.test(smtp_server));
             createAccountDiv(smtp_username);
             dismissAlert("account-deleted-success");
             dismissAlert("account-added-error");
+            dismissAlert("no-accounts-alert");
             displayAlert("account-added-success");
             localStorage.setItem(smtp_username, JSON.stringify([smtp_server, smtp_username, smtp_password, Date.now()]));
             clearForm();
