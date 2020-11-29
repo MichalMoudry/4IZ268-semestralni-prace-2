@@ -17,18 +17,23 @@ $(document).ready(function () {
     accountsList = document.getElementById("accounts-list");
     var localstorageKeys = Object.keys(localStorage);
     var accounts = localstorageKeys.filter(element => !element.includes("sent_") && !element.includes("draft_") && !element.includes("scheduled_"));
-    var accountsAsString = "";
-    var accountAsJson;
-    accounts.forEach(element => {
-        accountAsJson = JSON.parse(localStorage.getItem(element));
-        accountsAsString += accountAsJson[1] + "_" + accountAsJson[3] + "&";
-    });
-    var accountsWithDates = accountsAsString.split("&");
-    accountsWithDates.pop();
-    accountsWithDates.sort().reverse();
-    accountsWithDates.forEach(element => {
-        createAccountDiv(element.split("_")[0]);
-    });
+    if (accounts.length > 0) {
+        var accountsAsString = "";
+        var accountAsJson;
+        accounts.forEach(element => {
+            accountAsJson = JSON.parse(localStorage.getItem(element));
+            accountsAsString += accountAsJson[1] + "_" + accountAsJson[3] + "&";
+        });
+        var accountsWithDates = accountsAsString.split("&");
+        accountsWithDates.pop();
+        accountsWithDates.sort().reverse();
+        accountsWithDates.forEach(element => {
+            createAccountDiv(element.split("_")[0]);
+        });
+    }
+    else {
+        displayAlert("no-accounts-alert");
+    }
 });
 
 function addAccount() {

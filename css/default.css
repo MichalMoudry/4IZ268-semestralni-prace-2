@@ -24,8 +24,6 @@ main {
     background: linear-gradient(90deg, rgba(114,144,223,1) 0%, rgba(59,94,186,1) 98%);
     width: 100%;
     border-radius: 5px;
-    margin-top: 3px;
-    margin-bottom: -3px;
 }
 
 .mainpage-link {
@@ -82,7 +80,7 @@ main {
 }
 
 .text-blue {
-    color: #2196F3;
+    color: rgba(59,94,186,1);
 }
 
 select {

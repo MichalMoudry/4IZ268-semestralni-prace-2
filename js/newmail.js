@@ -65,7 +65,7 @@ function saveDraft() {
     var title = $("#email-title").val();
     var recipient = $("#email-recipient").val();
     var content = $("#email-content").val();
-    if (title != "" && recipient != "" && content != "" && sender != "") {
+    if (sender != "") {
         var account = JSON.parse(localStorage.getItem(sender));
         var dateSent = Date.now();
         saveEmailToDrafts(title, dateSent, JSON.stringify([account[0], account[1], account[2], recipient, title, content, dateSent]));
