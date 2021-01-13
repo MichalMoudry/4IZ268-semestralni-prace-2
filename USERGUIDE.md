@@ -3,6 +3,11 @@ This document servers as a simple user guide for Email Sender web application.
 ## Table of contents
 - [View sent emails](#view-sent-emails "View sent emails")
 - [Send emails](#send-emails "Send emails")
+- [Save email to drafts](#save-email-to-drafts "Save email to drafts")
+- [Editing emails](#editing-emails "Editing emails")
+  - [Drafts page](#drafts-page "Drafts page")
+  - [Editing page](#editing-page "Editing page")
+- [Scheduling emails](#scheduling-emails "Scheduling emails")
 
 ## View sent emails
 On this image below you can see index page of the web app. The page contains list of sent emails or you can see text "You have not sent an email yet.".
